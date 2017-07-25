@@ -1,6 +1,6 @@
 #!/bin/bash
 problem=$(basename "$PWD")
-rm -rf ./samples* && wget -q -O samples.zip "https://open.kattis.com/problems/"$problem"/file/statement/samples.zip" && dtrx samples.zip
+rm -rf ./samples* && wget -q -O samples.zip "https://open.kattis.com/problems/"$problem"/file/statement/samples.zip" && unzip samples.zip -d samples
 for i in ./samples/*.in; do 
 		
 		./$problem < "$i" > "${i%.*}".out;
