@@ -1,6 +1,6 @@
 #!/bin/bash
 problem=$(basename "$PWD")
-rm -rf ./samples* && wget -q -O samples.zip "https://open.kattis.com/problems/"$problem"/file/statement/samples.zip" && unzip samples.zip -d samples
+rm -rf ./samples* && wget -q -O samples.zip "https://open.kattis.com/problems/"$problem"/file/statement/samples.zip" && unzip -j samples.zip -d samples/
 for i in ./samples/*.in; do 
 		
 		./$problem < "$i" > "${i%.*}".out;
@@ -12,5 +12,5 @@ for i in ./samples/*.in; do
 			echo "Test `basename "${i%.*}"` passed."	
 		fi
 		
-		rm -rf ./samples*
+#		rm -rf ./samples*
 	done	
