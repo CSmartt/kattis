@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstring>
+#include <cmath>
 
 using namespace std;
 
@@ -11,10 +11,8 @@ int getLength(int input) {
 }
 
 int inputToFactors(int N, int length) {
-	int factors = length / 2;
-
-	/* This if() allows us to read the input directly to an int, as it compensates for a truncated leading zero. */
-	if(length /2 != 0) factors += 1;
+	int factors = ceil(length / 2);
+	/* Using ceil() here allows reading input as an int, as a truncated leading zero makes the input length odd. Ceil() compensates by increasing the number of factors by 1 if this is the case */
 
 	int arr[factors];
 	for (int i = factors - 1; i >= 0; i--) {
