@@ -10,7 +10,7 @@ int getLength(int input) {
 	return length;
 }
 
-int inputToFactors(int N, int length) {
+int inputToFactors(int N, float length) {
 	int factors = ceil(length / 2);
 	/* Using ceil() here allows reading input as an int, as a truncated leading zero makes the input length odd. Ceil() compensates by increasing the number of factors by 1 if this is the case */
 
