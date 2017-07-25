@@ -11,9 +11,9 @@ int getLength(int input) {
 }
 
 int inputToFactors(int N, int length) {
-	int factors = length / 2;i
+	int factors = length / 2;
 
-/* This if() allows us to read the input directly to an int, as it compensates for a truncated leading zero. */
+	/* This if() allows us to read the input directly to an int, as it compensates for a truncated leading zero. */
 	if(length /2 != 0) factors += 1;
 
 	int arr[factors];
