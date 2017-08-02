@@ -1,35 +1,28 @@
 #include <iostream>
+#include <cstdlib>
+#include <cstring>
 #include <cmath>
 
 using namespace std;
 
-int getLength(int input) {
-	int length = 1;
-	long div = input;
-	while(div /= 10) length++;
-	return length;
-}
-
-int inputToFactors(int N, float length) {
-	int factors = ceil(length / 2);
-	/* Using ceil() here allows reading input as an int, as a truncated leading zero makes the input length odd. Ceil() compensates by increasing the number of factors by 1 if this is the case */
-
-	int arr[factors];
-	for (int i = factors - 1; i >= 0; i--) {
-    	arr[i] = N % 100;
-    	N /= 100;
-	}
-	
-	for(int i = 0; i < factors; i++) {
-		cout << arr[i] << " " << endl;
-	}
-
+int compare (const void * a, const void * b) {
+  return ( *(int*)a - *(int*)b );
 }
 
 int main() {
-	int input;
-	cin >> input;
-	cout << input << endl;
-	inputToFactors(input, getLength(input));
-	cout << getLength(input) << endl;
+	char in[700];
+	cin >> in;
+	{
+		int factors[strlen(in)/2];
+		for(int i = 0; i < strlen(in); i += 2) {
+			factors[i/2] = ((in[i] - '0')*10) + (in[i+1] - '0');
+		}
+		long double k = 1;
+		for(int i = 0; i < strlen(in)/2; i++) k = k*factors[i];
+		long double div = floor(sqrt(k));
+		while(fmodl(k, div) != 0) div -= 1;
+		if(strlen(in) > 2) cout << fmodl((div + k/div), (pow(10, 9) + 7)) << endl;
+		else cout << factors[0] + 1 << endl;
+	}
+	return 0;
 }
