@@ -12,5 +12,5 @@ for i in ./samples/*.in; do
 			echo "Test `basename "${i%.*}"` passed."	
 		fi
 		
-#		rm -rf ./samples*
-	done	
+done	
+rm -rf ./samples*
